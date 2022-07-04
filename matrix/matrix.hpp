@@ -1,3 +1,6 @@
+#ifndef _MATRIX_H_
+#define _MATRIX_H_
+
 #include <cstddef>
 #include <vector>
 #include <ostream>
@@ -18,6 +21,7 @@ class Matrix{
         Matrix(double value, std::size_t row, std::size_t column);
         Matrix(std::vector<double> data, std::size_t row, std::size_t column);
         Matrix(const Matrix& matrix);
+        Matrix(Matrix&& matrix) noexcept;
         ~Matrix() = default;
 
         std::size_t get_row() const;
@@ -39,17 +43,18 @@ class Matrix{
         Matrix operator/(const Matrix& matrix) const;
         Matrix operator/(const double& value) const;
 
-        Matrix& operator+=(const Matrix& matrix) const;
-        Matrix& operator+=(const double& value) const;
+        Matrix& operator+=(const Matrix& matrix) noexcept;
+        Matrix& operator+=(const double& value) noexcept;
 
-        Matrix& operator-=(const Matrix& matrix) const;
-        Matrix& operator-=(const double& value) const;
+        Matrix& operator-=(const Matrix& matrix) noexcept;
+        Matrix& operator-=(const double& value) noexcept;
 
-        Matrix& operator*=(const Matrix& matrix) const;
-        Matrix& operator*=(const double& value) const;
+        Matrix& operator*=(const Matrix& matrix) noexcept;
+        Matrix& operator*=(const double& value) noexcept;
 
-        Matrix& operator/=(const Matrix& matrix) const;
-        Matrix& operator/=(const double& value) const;
+        Matrix& operator/=(const Matrix& matrix) noexcept;
+        Matrix& operator/=(const double& value) noexcept;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Matrix& matrix);
+#endif
