@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "matrix.hpp"
 
 #include <cassert>
 #include <utility>
@@ -78,8 +78,6 @@ Matrix Matrix::operator/(const double& value) const{
 }
 
 Matrix& Matrix::operator+=(const Matrix& matrix) noexcept{
-    assert(this->size_ != matrix.size_);
-
     if(this->size_ == matrix.size_){
         for(std::size_t i = 0; i < this->size_; ++i){
             this->matrix_data_[i] += matrix.matrix_data_[i];
@@ -95,8 +93,6 @@ Matrix& Matrix::operator+=(const double& value) noexcept{
 }
 
 Matrix& Matrix::operator-=(const Matrix& matrix) noexcept{
-    assert(this->size_ != matrix.size_);
-
     if(this->size_ == matrix.size_){
         for(std::size_t i = 0; i < this->size_; ++i){
             this->matrix_data_[i] -= matrix.matrix_data_[i];
@@ -112,8 +108,6 @@ Matrix& Matrix::operator-=(const double& value) noexcept{
 }
 
 Matrix& Matrix::operator*=(const Matrix& matrix) noexcept{
-    assert(this->size_ != matrix.size_);
-
     if(this->size_ == matrix.size_){
         for(std::size_t i = 0; i < this->size_; ++i){
             this->matrix_data_[i] *= matrix.matrix_data_[i];
@@ -129,8 +123,6 @@ Matrix& Matrix::operator*=(const double& value) noexcept{
 }
 
 Matrix& Matrix::operator/=(const Matrix& matrix) noexcept{
-    assert(this->size_ != matrix.size_);
-
     if(this->size_ == matrix.size_){
         for(std::size_t i = 0; i < this->size_; ++i){
             this->matrix_data_[i] /= matrix.matrix_data_[i];
@@ -144,6 +136,13 @@ Matrix& Matrix::operator/=(const double& value) noexcept{
     }
     return *this;
 }
+
+const double Matrix::Sum(){
+    double res = 0;
+    for(std::size_t i = 0; i < this->size_; i++) res += this->matrix_data_[i];
+    return res;
+};
+
 
 std::ostream& operator<<(std::ostream& stream, const Matrix& matrix){
     stream << '[';

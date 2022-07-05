@@ -9,7 +9,6 @@ struct MatrixIndex{
     std::size_t row, column;
 };
 
-
 class Matrix{
     private:
         std::vector<double> matrix_data_;
@@ -54,6 +53,8 @@ class Matrix{
 
         Matrix& operator/=(const Matrix& matrix) noexcept;
         Matrix& operator/=(const double& value) noexcept;
+
+        const double Sum();
 };
 
 std::ostream& operator<<(std::ostream& stream, const Matrix& matrix);
