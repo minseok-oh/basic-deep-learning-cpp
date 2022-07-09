@@ -1,6 +1,6 @@
 #include "perceptron.hpp"
 
-const bool perceptron::And(const double& x1, const double& x2){
+const bool Perceptron::And(const double& x1, const double& x2){
     Matrix x({x1, x2}, 1, 2);
     Matrix w({0.5, 0.5}, 1, 2);
     double b = -0.7;
@@ -14,7 +14,7 @@ const bool perceptron::And(const double& x1, const double& x2){
     }
 }
 
-const bool perceptron::Or(const double& x1, const double& x2){
+const bool Perceptron::Or(const double& x1, const double& x2){
     Matrix x({x1, x2}, 1, 2);
     Matrix w({0.5, 0.5}, 1, 2);
     double b = -0.2;
@@ -28,7 +28,7 @@ const bool perceptron::Or(const double& x1, const double& x2){
     }
 }
 
-const bool perceptron::Nand(const double& x1, const double& x2){
+const bool Perceptron::Nand(const double& x1, const double& x2){
     Matrix x({x1, x2}, 1, 2);
     Matrix w({-0.5, -0.5}, 1, 2);
     double b = 0.7;
@@ -42,9 +42,9 @@ const bool perceptron::Nand(const double& x1, const double& x2){
     }
 }
 
-const bool perceptron::Xor(const double& x1, const double& x2){
-    double s1 = perceptron::Nand(x1, x2);
-    double s2 = perceptron::Or(x1, x2);
-    bool y = perceptron::And(s1, s2);
+const bool Perceptron::Xor(const double& x1, const double& x2){
+    double s1 = Perceptron::Nand(x1, x2);
+    double s2 = Perceptron::Or(x1, x2);
+    bool y = Perceptron::And(s1, s2);
     return y;
 }
