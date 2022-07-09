@@ -55,6 +55,7 @@ class Matrix{
         Matrix& operator/=(const double& value) noexcept;
 
         const double Sum();
+        const Matrix Dot(const Matrix& matrix);
 };
 
 std::ostream& operator<<(std::ostream& stream, const Matrix& matrix);

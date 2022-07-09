@@ -143,6 +143,18 @@ const double Matrix::Sum(){
     return res;
 };
 
+const Matrix Matrix::Dot(const Matrix& matrix){
+    assert(this->row_ == matrix.column_ && this->column_ == matrix.row_);
+    Matrix ret(0, this->row_, matrix.column_);
+    for(std::size_t i = 0; i < this->row_; ++i){
+        for(std::size_t j = 0; j < matrix.column_; ++j){
+            for(std::size_t k = 0; k < this->column_; ++k){
+                ret[{i, j}] += ((*this)[{i, k}]) * (matrix[{k, j}]);
+            }
+        }
+    }
+    return ret;
+};
 
 std::ostream& operator<<(std::ostream& stream, const Matrix& matrix){
     stream << '[';
