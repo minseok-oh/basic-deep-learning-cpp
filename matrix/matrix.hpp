@@ -25,6 +25,8 @@ class Matrix{
 
         std::size_t get_row() const;
         std::size_t get_column() const;
+        std::size_t get_size() const;
+        std::vector<double> get_matrix_data() const;
 
         Matrix& operator=(const Matrix& matrix);
         double operator[](const MatrixIndex& index) const noexcept;

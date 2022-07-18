@@ -31,6 +31,13 @@ std::size_t Matrix::get_row() const{
 std::size_t Matrix::get_column() const{
     return this->column_;
 }
+std::size_t Matrix::get_size() const {
+    return this->size_;
+}
+std::vector<double> Matrix::get_matrix_data() const {
+    return this->matrix_data_;
+}
+
 
 Matrix& Matrix::operator=(const Matrix& matrix){
     this->matrix_data_ = matrix.matrix_data_;
