@@ -12,6 +12,8 @@ namespace ActiveFunction{
 
     const double Relu(const double& x);
     const Matrix Relu(const Matrix& x);
+	
+	const Matrix SoftMax(const Matrix& x);
 };
 
 #endif

@@ -40,3 +40,20 @@ const Matrix ActiveFunction::Relu(const Matrix& x){
     }
     return Matrix(ret, x.get_row(), x.get_column());
 }
+
+const Matrix ActiveFunction::SoftMax(const Matrix& x){
+	std::vector<double> ret(x.get_size());
+	std::vector<double> matrix_data(x.get_matrix_data());
+	
+	double data_mean = 0;
+	for(std::size_t i = 0; i < matrix_data.size(); ++i){
+		matrix_data[i] = exp(matrix_data[i]);
+		data_mean += matrix_data[i];
+	}
+	data_mean /= matrix_data.size();
+	
+	for(std::size_t i = 0; i < ret.size(); ++i){
+		ret[i] = matrix_data[i] / data_mean;
+	}
+	return Matrix(ret, x.get_row(), x.get_column());
+}
